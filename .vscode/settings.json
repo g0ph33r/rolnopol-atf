@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "cSpell.userWords": ["Rolnopol"],
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "chat.tools.terminal.autoApprove": {
+    "git add": true,
+    "git commit": true
+  }
+}
