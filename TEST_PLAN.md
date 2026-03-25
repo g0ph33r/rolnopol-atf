@@ -4,6 +4,14 @@
 
 ---
 
+## 0. Page Availability
+
+- [x] Page title contains "Rolnopol" `@smoke`
+- [x] Login page is visible and loaded `@smoke`
+- [x] Register page is visible and loaded `@smoke`
+- [x] Documentation page is visible and loaded `@smoke`
+- [x] Swagger / API Explorer page is visible and loaded `@smoke`
+
 ## 1. Authentication
 
 - Register with valid data → logged in, redirected to `/profile.html` `@auth` `@register` `@smoke`
