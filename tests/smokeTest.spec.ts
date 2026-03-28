@@ -70,3 +70,20 @@ test(
     );
   },
 );
+
+test(
+  "register with valid data should redirect to login page",
+  { tag: ["@auth", "@register", "@smoke"] },
+  async ({ page }) => {
+    const uniqueEmail = `testuser${Date.now()}@example.com`;
+
+    await page.goto("/register.html");
+
+    await page.getByTestId("email-input").fill(uniqueEmail);
+    await page.getByTestId("display-name-input").fill("Test User");
+    await page.getByTestId("password-input").fill("Test1234");
+    await page.getByTestId("register-submit-btn").click();
+
+    await expect(page).toHaveURL(/login\.html/);
+  },
+);
