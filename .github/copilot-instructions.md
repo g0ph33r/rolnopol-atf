@@ -10,20 +10,7 @@ When creating or modifying tests, always review `playwright.config.ts` first to 
 - configured projects (browsers/devices)
 - global timeout and reporter settings
 
-## Test Structure
-
-All tests must follow the **Arrange / Act / Assert** pattern with inline comments:
-
-```typescript
-// Arrange
-// set up data, navigate to page, fill inputs
-
-// Act
-// perform the action under test (e.g. click submit)
-
-// Assert
-// verify the expected outcome
-```
+Always follow the rules defined in [CODING_STANDARDS.md](../CODING_STANDARDS.md) when writing or modifying code.
 
 ## Conventional Commits
 

@@ -1,5 +1,20 @@
 # Coding Standards
 
+## Test Structure
+
+All tests must follow the **Arrange / Act / Assert** pattern with inline comments:
+
+```typescript
+// Arrange
+// set up data, navigate to page, fill inputs
+
+// Act
+// perform the action under test (e.g. click submit)
+
+// Assert
+// verify the expected outcome
+```
+
 ## Page Object Pattern
 
 1. **No assertions in Page Objects.** Never use `expect()` inside a Page Object. All verifications belong in test files only.
