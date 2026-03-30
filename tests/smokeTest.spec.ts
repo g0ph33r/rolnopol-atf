@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { RegisterPage } from "../src/pages/RegisterPage";
 
 test(
   "should display Rolnopol in the page title",
@@ -96,19 +97,15 @@ test(
   { tag: ["@auth", "@register", "@smoke"] },
   async ({ page }) => {
     // Arrange
+    const registerPage = new RegisterPage(page);
     const uniqueEmail = `testuser${Date.now()}@example.com`;
-
-    await page.goto("/register.html");
-    await page.getByTestId("email-input").fill(uniqueEmail);
-    await page.getByTestId("display-name-input").fill("Test User");
-    await page.getByTestId("password-input").fill("Test1234");
+    await registerPage.goto();
 
     // Act
-    await page.getByTestId("register-submit-btn").click();
+    await registerPage.register(uniqueEmail, "Test1234", "Test User");
 
     // Assert
-    const banner = page.getByText("Registration successful!");
-    await expect(banner).toBeVisible();
+    await expect(registerPage.successBanner()).toBeVisible();
     await expect(page).toHaveURL(/login\.html/);
   },
 );
