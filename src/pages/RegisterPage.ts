@@ -1,8 +1,9 @@
 import { type Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
+import { URLS } from "./urls";
 
 export class RegisterPage extends BasePage {
-  readonly url = "/register.html";
+  readonly url = URLS.register;
 
   constructor(page: Page) {
     super(page);
@@ -24,6 +25,7 @@ export class RegisterPage extends BasePage {
     await this.page.getByTestId("register-submit-btn").click();
   }
 
+  /** Composite action: fills all required fields and submits the registration form in one call. */
   async register(email: string, password: string, displayName?: string) {
     await this.fillEmail(email);
     if (displayName) {

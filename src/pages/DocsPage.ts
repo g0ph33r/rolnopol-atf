@@ -1,8 +1,9 @@
 import { type Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
+import { URLS } from "./urls";
 
 export class DocsPage extends BasePage {
-  readonly url = "/docs.html";
+  readonly url = URLS.docs;
 
   constructor(page: Page) {
     super(page);

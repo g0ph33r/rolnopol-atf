@@ -14,7 +14,7 @@
 
 ## 1. Authentication
 
-- Register with valid data → logged in, redirected to `/profile.html` `@auth` `@register` `@smoke`
+- [x] Register with valid data → success banner shown, redirected to `/login.html` `@auth` `@register` `@smoke`
 - Register with duplicate email → error shown `@auth` `@register` `@negative`
 - Login with valid credentials → cookies set (`rolnopolToken`, `rolnopolLoginTime`) `@auth` `@login` `@smoke`
 - Login with invalid credentials → error shown `@auth` `@login` `@negative`
@@ -22,7 +22,9 @@
 
 ## 2. Farm Management
 
-- Add / edit / delete a field `@farm` `@fields` `@smoke`
+- Add a field `@farm` `@fields` `@smoke`
+- Edit a field `@farm` `@fields`
+- Delete a field `@farm` `@fields` `@negative`
 - Add animal and assign to a field `@farm` `@animals`
 - Add staff and assign to a field `@farm` `@staff`
 - Deleting an assigned field/animal is blocked `@farm` `@negative`

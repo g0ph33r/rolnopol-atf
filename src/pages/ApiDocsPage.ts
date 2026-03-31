@@ -1,8 +1,9 @@
 import { type Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
+import { URLS } from "./urls";
 
 export class ApiDocsPage extends BasePage {
-  readonly url = "/swagger.html";
+  readonly url = URLS.apiDocs;
 
   constructor(page: Page) {
     super(page);
