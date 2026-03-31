@@ -1,4 +1,8 @@
 import { expect, test } from "@playwright/test";
+import { ApiDocsPage } from "../src/pages/ApiDocsPage";
+import { DocsPage } from "../src/pages/DocsPage";
+import { HomePage } from "../src/pages/HomePage";
+import { LoginPage } from "../src/pages/LoginPage";
 import { RegisterPage } from "../src/pages/RegisterPage";
 
 test(
@@ -6,10 +10,11 @@ test(
   { tag: "@smoke" },
   async ({ page }) => {
     // Arrange
+    const homePage = new HomePage(page);
     const expectedTitle = /Rolnopol/;
 
     // Act
-    await page.goto("/");
+    await homePage.goto();
 
     // Assert
     await expect(page).toHaveTitle(expectedTitle);
@@ -21,17 +26,16 @@ test(
   { tag: "@smoke" },
   async ({ page }) => {
     // Arrange
+    const loginPage = new LoginPage(page);
     const expectedText = "Login";
 
     // Act
-    const response = await page.goto("/login.html");
+    const response = await loginPage.goto();
 
     // Assert
     await expect(response).not.toBeNull();
     expect(response!.status()).toBeLessThan(400);
-    await expect(page.getByTestId("login-submit-btn")).toContainText(
-      expectedText,
-    );
+    await expect(loginPage.submitButton()).toContainText(expectedText);
   },
 );
 
@@ -40,17 +44,16 @@ test(
   { tag: "@smoke" },
   async ({ page }) => {
     // Arrange
+    const registerPage = new RegisterPage(page);
     const expectedText = "Create Your User Account";
 
     // Act
-    const response = await page.goto("/register.html");
+    const response = await registerPage.goto();
 
     // Assert
     await expect(response).not.toBeNull();
     expect(response!.status()).toBeLessThan(400);
-    await expect(page.getByTestId("register-subtitle")).toContainText(
-      expectedText,
-    );
+    await expect(registerPage.subtitle()).toContainText(expectedText);
   },
 );
 
@@ -59,17 +62,16 @@ test(
   { tag: "@smoke" },
   async ({ page }) => {
     // Arrange
+    const docsPage = new DocsPage(page);
     const expectedText = "Documentation";
 
     // Act
-    const response = await page.goto("/docs.html");
+    const response = await docsPage.goto();
 
     // Assert
     await expect(response).not.toBeNull();
     expect(response!.status()).toBeLessThan(400);
-    await expect(page.getByTestId("docs-header-title-col")).toContainText(
-      expectedText,
-    );
+    await expect(docsPage.headerTitle()).toContainText(expectedText);
   },
 );
 
@@ -78,17 +80,16 @@ test(
   { tag: "@smoke" },
   async ({ page }) => {
     // Arrange
+    const swaggerPage = new ApiDocsPage(page);
     const expectedText = "API Explorer";
 
     // Act
-    const response = await page.goto("/swagger.html");
+    const response = await swaggerPage.goto();
 
     // Assert
     await expect(response).not.toBeNull();
     expect(response!.status()).toBeLessThan(400);
-    await expect(page.getByTestId("nav-api-explorer")).toContainText(
-      expectedText,
-    );
+    await expect(swaggerPage.apiExplorerNav()).toContainText(expectedText);
   },
 );
 

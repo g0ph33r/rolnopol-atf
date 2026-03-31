@@ -1,14 +1,11 @@
 import { type Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class RegisterPage {
-  readonly page: Page;
+export class RegisterPage extends BasePage {
+  readonly url = "/register.html";
 
   constructor(page: Page) {
-    this.page = page;
-  }
-
-  async goto() {
-    await this.page.goto("/register.html");
+    super(page);
   }
 
   async fillEmail(email: string) {
@@ -34,6 +31,10 @@ export class RegisterPage {
     }
     await this.fillPassword(password);
     await this.submit();
+  }
+
+  subtitle() {
+    return this.page.getByTestId("register-subtitle");
   }
 
   successBanner() {
